@@ -11,8 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from resnet import _ConvBatchNormReLU, _ResBlock
-
+from .resnet import _ConvBatchNormReLU, _ResBlock
 
 class _ASPPModule(nn.Module):
     """Atrous Spatial Pyramid Pooling"""
@@ -115,7 +114,7 @@ def DeepLabV2_ResNet101_MSC(n_classes):
 
 if __name__ == '__main__':
     model = DeepLabV2_ResNet101_MSC(n_classes=21)
-    print list(model.named_children())
+    print(list(model.named_children()))
     model.eval()
     image = torch.autograd.Variable(torch.randn(1, 3, 513, 513))
-    print model(image)[0].size()
+    print(model(image)[0].size())
